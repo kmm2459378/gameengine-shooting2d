@@ -6,6 +6,18 @@ TagManager:
   tags:
   - New tag
   - Enemy A
+  - Enemy
+  - BossEnemy
+  - Player Attack
+  - Enemy B
+  - Enemy C
+  - Enemy C2
+  - Enemy Beem
+  - Enemy Boom
+  - Enegy Up
+  - Special Gauge Up
+  - Special Attack
+  - GameManager
   layers:
   - Default
   - TransparentFX

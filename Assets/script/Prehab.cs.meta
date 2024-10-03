@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: cd11be5d82b40384299d00ed39926f83
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EnemyAPrehab: {fileID: 5741767990157904897, guid: bfde4366ff8ca6e41b1dcf2d33db53a6, type: 3}
+  - BossEnemyPrehab: {fileID: 1545835244039903261, guid: 7686b2d43d380ee419ecb92da9673f1b, type: 3}
+  - EBP: {fileID: 1365954242309711776, guid: 17c1425f09dbfe445b7a7130b73a4eff, type: 3}
+  - ECP: {fileID: 6169855815847131288, guid: a36234297bc6eb64cb035578333aac7f, type: 3}
+  - ECP2: {fileID: 7695264304638888643, guid: 7572b5894b0af5e4396e37bd564fe225, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

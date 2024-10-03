@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
-{   public GameObject EnemyAPrehab;
+{   
     public GameObject spearPrehab;
-    public Button AttackButton;
+    public GameObject SpecialAttack;
+    GameObject airgauge;
     public Vector3 mousePos, worldPos, beforeMousePos;
     //Clamp関数
     private float _minX = -2;
@@ -16,18 +17,27 @@ public class PlayerController : MonoBehaviour
     private float _maxY = 5;
     //1度だけ動かす
     private bool hasMovedOnce = false;
+    public Button AttackButton;
+    // 玉のスピード
+    public float _span = 0.2f;
+    public float _delta = 0;
+
+   
     // Start is called before the first frame update
     void Start()
     {
         
         Application.targetFrameRate = 60;
-        //アタック
+        AttackButton = GameObject.Find("SpecialButton").GetComponent<Button>();
         AttackButton.onClick.AddListener(TouchBeem);
+        this.airgauge = GameObject.Find("SpecialButton");
+
     }
 
     // Update is called once per frame
     void Update()
     {   
+        
 
         var pos1 = transform.position;
         pos1.x = Mathf.Clamp(pos1.x, _minX, _maxX);
@@ -39,23 +49,37 @@ public class PlayerController : MonoBehaviour
 
         if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null)
             return;
+        
+       
+        _delta += Time.deltaTime;
+        Debug.Log($"_delta: {_delta}, _span: {_span}");
+
         if (Input.GetMouseButton(0))
         {
-            Instantiate(spearPrehab, transform.position, Quaternion.identity);
+            if (_delta > _span)
+            {
+                _delta = 0;
+                Instantiate(spearPrehab, transform.position, Quaternion.identity);
+            }
             Controller();
             Debug.Log("a");
         }
 
-    }    
-         
        
-     
+    }
 
-    //ビーム
+
+
+
     public void TouchBeem()
-    {  
-           Instantiate(spearPrehab, transform.position, Quaternion.identity);
-           Debug.Log("a");
+    {
+        if (this.airgauge.GetComponent<Image>().fillAmount == 1.0f)
+        {
+            Instantiate(SpecialAttack, transform.position, Quaternion.identity);
+            Debug.Log("a");
+            this.airgauge.GetComponent<Image>().fillAmount -= 1.0f;
+        }
+        
     }
 
     public void Controller()
@@ -79,9 +103,11 @@ public class PlayerController : MonoBehaviour
         }
           
         Debug.Log($"beforeMousePos: {beforeMousePos}, World Position: {worldPos}");
-          
-         
-        
+
+
+
     }
+    
+    
 }
     

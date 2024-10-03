@@ -1,4 +1,4 @@
-using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnemyB : MonoBehaviour
@@ -6,17 +6,25 @@ public class EnemyB : MonoBehaviour
     private Rigidbody2D _ri;
     public GameObject EnemySpearPrehab;
     public GameObject EnemySpearPrehab2;
-    float _AttackSpeed = 0.5f;
+    float _AttackSpeed = 1.0f;
     float _Count = 0;
     Vector3 _Force;
-    public  float _speed = -1.0f;
+    public  float _speed = -3.0f;
     Vector3 _SpearPosition, _SpearPosition2;
+    int HP = 10;
+    public GameObject Specialrecover;
+    public GameObject HPrecover;
+    float Srow;
+    int Score_MOB = 0;
+    GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Application.targetFrameRate = 60;
-        _ri = GetComponent<Rigidbody2D>(); 
+        _ri = GetComponent<Rigidbody2D>();
+        Srow = Random.Range(0, 2);
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +33,48 @@ public class EnemyB : MonoBehaviour
         ContollerAndAttack();
 
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player Attack"))
+        {
+            HP -= 1;
+            if (HP < 1)
+            {
+                Destroy(gameObject);
+                gameManager.ScoreAdd(Score_MOB);
+                if (Srow == 0)
+                {
+                    Instantiate(Specialrecover, transform.position, Quaternion.identity);
+                    Instantiate(Specialrecover, transform.position, Quaternion.identity);
+                }
+
+                if (Srow == 1)
+                {
+                    Instantiate(HPrecover, transform.position, Quaternion.identity);
+                    Instantiate(HPrecover, transform.position, Quaternion.identity);
+                }
+            }
+
+        }
+
+        if (collision.gameObject.CompareTag("Special Attack"))
+        {
+            gameManager.ScoreAdd(Score_MOB);
+            Destroy(gameObject);
+
+            if (Srow == 0)
+            {
+                Instantiate(Specialrecover, transform.position, Quaternion.identity);
+                Instantiate(Specialrecover, transform.position, Quaternion.identity);
+            }
+
+            if (Srow == 1)
+            {
+                Instantiate(HPrecover, transform.position, Quaternion.identity);
+                Instantiate(HPrecover, transform.position, Quaternion.identity);
+            }
+        }
     }
 
     public void ContollerAndAttack()

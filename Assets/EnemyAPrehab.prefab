@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5571504584396872265}
   - component: {fileID: 2521943994512086896}
   - component: {fileID: 6952397839700198039}
-  m_Layer: 0
+  - component: {fileID: -3939104224397462698}
+  m_Layer: 3
   m_Name: EnemyAPrehab
   m_TagString: Enemy A
   m_Icon: {fileID: 0}
@@ -101,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c55dfd6b93467429dc75d04e313ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Specialrecover: {fileID: 8435745707267182302, guid: d3fa9bc85f0eada45ae3d3b9cb0da9da, type: 3}
+  HPrecover: {fileID: 8817122806535116929, guid: ebd947b97a0dc4b4f8a59f0a59dbc9e1, type: 3}
   force: 0
 --- !u!50 &6952397839700198039
 Rigidbody2D:
@@ -114,10 +117,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -129,3 +132,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &-3939104224397462698
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741767990157904897}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
